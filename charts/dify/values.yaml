@@ -8,7 +8,7 @@
 image:
   api:
     repository: 10.29.230.150:31381/library/langgenius/dify-api
-    tag: "1.9.1"
+    tag: "1.7.1"
     pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
     ## Secrets must be manually created in the namespace.
@@ -19,7 +19,7 @@ image:
 
   web:
     repository: 10.29.230.150:31381/library/langgenius/dify-web
-    tag: "1.9.1"
+    tag: "1.7.1"
     pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
     ## Secrets must be manually created in the namespace.
@@ -41,7 +41,7 @@ image:
 
   proxy:
     repository: 10.29.230.150:31381/library/library/nginx
-    tag: latest
+    tag: "1.27.5"
     pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
     ## Secrets must be manually created in the namespace.
@@ -52,7 +52,7 @@ image:
 
   ssrfProxy:
     repository: 10.29.230.150:31381/library/ubuntu/squid
-    tag: latest
+    tag: "6.10"
     pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
     ## Secrets must be manually created in the namespace.
@@ -870,7 +870,7 @@ weaviate:
     # of weaviate. In accordance with Infra-as-code, you should pin this value
     # down and only change it if you explicitly want to upgrade the Weaviate
     # version.
-    tag: 1.27.26
+    tag: "1.27.26"
     repo: semitechnologies/weaviate
     # Image pull policy: https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy
     pullPolicy: IfNotPresent

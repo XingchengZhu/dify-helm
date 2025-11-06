@@ -2667,7 +2667,10 @@ externalRedis:
   enabled: true
   host: "rfrm-redis-harbor.default.svc.cluster.local"
   port: 6379
+  username: ""
   password: "Password"
+  sentinel:
+    enabled: false
 
 
 

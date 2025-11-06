@@ -7,7 +7,7 @@
 
 image:
   api:
-    repository: langgenius/dify-api
+    repository: 10.29.230.150:31381/library/langgenius/dify-api
     tag: "1.9.1"
     pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
@@ -18,7 +18,7 @@ image:
     #   - myRegistryKeySecretName
 
   web:
-    repository: langgenius/dify-web
+    repository: 10.29.230.150:31381/library/langgenius/dify-web
     tag: "1.9.1"
     pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
@@ -29,7 +29,7 @@ image:
     #   - myRegistryKeySecretName
 
   sandbox:
-    repository: langgenius/dify-sandbox
+    repository: 10.29.230.150:31381/library/langgenius/dify-sandbox
     tag: "0.2.12"
     pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
@@ -40,7 +40,7 @@ image:
     #   - myRegistryKeySecretName
 
   proxy:
-    repository: nginx
+    repository: 10.29.230.150:31381/library/library/nginx
     tag: latest
     pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
@@ -51,7 +51,7 @@ image:
     #   - myRegistryKeySecretName
 
   ssrfProxy:
-    repository: ubuntu/squid
+    repository: 10.29.230.150:31381/library/ubuntu/squid
     tag: latest
     pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
@@ -62,8 +62,8 @@ image:
     #   - myRegistryKeySecretName
 
   pluginDaemon:
-    repository: langgenius/dify-plugin-daemon
-    tag: 0.3.0-local
+    repository: 10.29.230.150:31381/library/langgenius/dify-plugin-daemon
+    tag: 0.2.0-local
     pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
     ## Secrets must be manually created in the namespace.
@@ -783,7 +783,7 @@ pluginDaemon:
     annotations: {}
 
 postgresql:
-  enabled: true
+  enabled: false
   name: postgres
   global:
     storageClass: ""
@@ -863,7 +863,7 @@ weaviate:
   enabled: true
   image:
     # registry where weaviate image is stored
-    registry: cr.weaviate.io
+    registry: 10.29.230.150:31381/library
     # Tag of weaviate image to deploy
     # Note: We strongly recommend you overwrite this value in your own values.yaml.
     # Otherwise a mere upgrade of the chart could lead to an unexpected upgrade
@@ -1495,7 +1495,7 @@ tolerations: []
 affinity: {}
 
 redis:
-  enabled: true
+  enabled: false
   ## @section Global parameters
   ## Global Docker image parameters
   ## Please, note that this will override the image parameters, including dependencies, configured to use the global value
@@ -2632,10 +2632,10 @@ redis:
 # - these configs are only used when `externalPostgres.enabled` is true
 ###################################
 externalPostgres:
-  enabled: false
+  enabled: true
   username: "postgres"
-  password: "difyai123456"
-  address: localhost
+  password: "Password"
+  address: postgresql-harbor.default.svc.cluster.local
   port: 5432
   database:
     api: "dify"
@@ -2648,21 +2648,27 @@ externalPostgres:
 # External Redis
 # - these configs are only used when `externalRedis.enabled` is true
 ###################################
+# externalRedis:
+#   enabled: true
+#   host: "redis.example"
+#   port: 6379
+#   username: ""
+#   password: "difyai123456"
+#   useSSL: false
+#   sentinel:
+#     enabled: false
+#     masterSet: "mymaster"
+#     sentinels:
+#       - "sentinel1.example:26379"
+#       - "sentinel2.example:26379"
+#       - "sentinel3.example:26379"
+#     password: ""
 externalRedis:
-  enabled: false
-  host: "redis.example"
+  enabled: true
+  host: "rfrm-redis-harbor.default.svc.cluster.local"
   port: 6379
-  username: ""
-  password: "difyai123456"
-  useSSL: false
-  sentinel:
-    enabled: false
-    masterSet: "mymaster"
-    sentinels:
-      - "sentinel1.example:26379"
-      - "sentinel2.example:26379"
-      - "sentinel3.example:26379"
-    password: ""
+  password: "Password"
+
 
 
 ## @Section Extenral storage backend
